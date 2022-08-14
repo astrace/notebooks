@@ -63,39 +63,10 @@ def historical_prices(
     
 
 if __name__ == "__main__":
-    # Top 30 coins as of Aug. 14, 2002
-    # Not including stables or wrapped tokens
     coin_ids = [
-        "bitcoin",
-        "ethereum",
-        "binancecoin",
-        "ripple",
-        "cardano",
-        "solana",
-        "polkadot",
-        "dogecoin",
-        "avalanche-2",
-        "staked-ether",
-        "shiba-inu",
-        "matic-network",
-        "tron",
-        "ethereum-classic",
-        "okb",
-        "near",
-        "leo-token",
-        "litecoin",
-        "chainlink",
-        "ftx-token",
-        "uniswap",
-        "crypto-com-chain",
-        "cosmos",
-        "stellar",
-        "monero",
-        "flow",
-        "bitcoin-cash",
-        "algorand",
-        "vechain",
-        "filecoin"
+        line.strip()
+        for line in open('coin_list.txt').readlines()
+        if not line.startswith('#')
     ]
     for cid in coin_ids:
         historical_prices(cid, "01-01-2009", "01-08-2022")
