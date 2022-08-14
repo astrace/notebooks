@@ -47,7 +47,7 @@ def historical_prices(
     # add date
     df["date"] = [str(datetime.fromtimestamp(ts)) for ts in df.index]
     # add ticker
-    df["ticker"] = ticker + "|" + currency
+    df["ticker"] = ticker
     # change column order
     df = df[["date"] + ["ticker"] + list(df.columns[:-2])]
 
