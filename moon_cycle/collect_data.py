@@ -63,11 +63,21 @@ def historical_prices(
     
 
 if __name__ == "__main__":
+    '''
     coin_ids = [
         line.strip()
         for line in open('coin_list.txt').readlines()
         if not line.startswith('#')
     ]
+    coin_ids = list(set(coin_ids))
+    '''
+
+    # get top-n tokens
+    n = 50
+
+    results = cg.get_coins_markets(vs_currency='usd', order='market_cap_desc')
+    coin_ids = [d['id'] for d in results[:n]]
+
     for cid in coin_ids:
         historical_prices(cid, "01-01-2009", "01-08-2022")
         time.sleep(5) # in case of rate limits
